@@ -1,11 +1,11 @@
 ﻿module objects {
-    // Island Class ++++++++++++++++++++++++++++++++++++++
-    export class Island extends objects.GameObject {
+    // FuelCan Class ++++++++++++++++++++++++++++++++++++++
+    export class FuelCan extends objects.GameObject {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++
         constructor(imageString: string) {
             super(imageString);
 
-            this.name = "island";
+            this.name = "fuelcan";
             this.sound = "yay";
             this.dx = 5;
 
@@ -15,7 +15,7 @@
         // PRIVATE METHODS ++++++++++++++++++++++++++++++
         private checkBounds(): void {
 
-            // check if island has left screen
+            // check if fuelcan has left screen
             if (this.x < 0) {
                 this.reset();
             }
@@ -23,7 +23,7 @@
 
 
         private reset(): void {
-            this.y = Math.floor(Math.random() * 380); // start island at random location
+            this.y = Math.floor(Math.random() * 380); // start fuelcan at random location
             this.x = 600; // start island off stage
         }
 

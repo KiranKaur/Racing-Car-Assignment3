@@ -1,6 +1,6 @@
 ﻿module objects {
-    // Ocean Class ++++++++++++++++++++++++++++++++++++++
-    export class Ocean extends createjs.Bitmap {
+    // Road Class ++++++++++++++++++++++++++++++++++++++
+    export class Road extends createjs.Bitmap {
         // PUBLIC PROPERTIES ++++++++++++++++++++++++++++
         width: number;
         height: number;
@@ -18,7 +18,7 @@
         // PRIVATE METHODS ++++++++++++++++++++++++++++++
         private checkBounds(): void {
 
-            // check if ocean has left screen
+            //  road has left screen
             if (this.x == -1280) {
                 this.reset();
             }
@@ -27,14 +27,14 @@
 
         private reset(): void {
             this.x = 0;
-            this.y = 0; // reset ocean off screen
+            this.y = 0; // reset road off screen
         }
 
 
         // PUBLIC METHODS +++++++++++++++++++++++++++++++
         public update(): void {
 
-            this.x -= this.dx; // moves Ocean down the stage
+            this.x -= this.dx; // moves road left the stage
             this.checkBounds();
         }
     }

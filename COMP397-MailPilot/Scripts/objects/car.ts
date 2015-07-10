@@ -1,6 +1,6 @@
 ﻿module objects {
-    // Plane Class ++++++++++++++++++++++++++++++++++++++
-    export class Plane extends objects.GameObject {
+    // Car Class ++++++++++++++++++++++++++++++++++++++
+    export class Car extends objects.GameObject {
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++
         constructor(imageString: string) {
             super(imageString);
@@ -14,7 +14,7 @@
 
         // PUBLIC METHODS +++++++++++++++++++++++++++++++
         public update(): void {
-            this.y = stage.mouseY; // position plane under mouse
+            this.y = stage.mouseY; // position car under mouse
         }
     }
 } 

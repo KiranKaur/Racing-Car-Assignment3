@@ -5,10 +5,10 @@
 /// <reference path="typings/preloadjs/preloadjs.d.ts" />
 /// <reference path="utility/utility.ts" />
 /// <reference path="objects/gameobject.ts" />
-/// <reference path="objects/ocean.ts" />
-/// <reference path="objects/plane.ts" />
-/// <reference path="objects/island.ts" />
-/// <reference path="objects/cloud.ts" />
+/// <reference path="objects/road.ts" />
+/// <reference path="objects/car.ts" />
+/// <reference path="objects/fuelcan.ts" />
+/// <reference path="objects/stone.ts" />
 /// <reference path="objects/scoreboard.ts" />
 /// <reference path="managers/collision.ts" />
 // Game Framework Variables
@@ -18,19 +18,19 @@ var stats;
 var game;
 var assets;
 var manifest = [
-    { id: "ocean", src: "assets/images/road track.png" },
-    { id: "plane", src: "assets/images/car7.png" },
-    { id: "island", src: "assets/images/gaspump.png" },
-    { id: "cloud", src: "assets/images/stone.png" },
+    { id: "road", src: "assets/images/road track.png" },
+    { id: "car", src: "assets/images/car7.png" },
+    { id: "fuelcan", src: "assets/images/gaspump.png" },
+    { id: "stone", src: "assets/images/stone.png" },
     { id: "yay", src: "assets/audio/yay.ogg" },
     { id: "thunder", src: "assets/audio/thunder.ogg" },
     { id: "engine", src: "assets/audio/engine.ogg" }
 ];
 // Game Variables
-var ocean;
-var plane;
-var island;
-var clouds = [];
+var road;
+var car;
+var fuelcan;
+var stones = [];
 var scoreboard;
 // Game Managers
 var collision;
@@ -67,14 +67,14 @@ function setupStats() {
 // Callback function that creates our Main Game Loop - refreshed 60 fps
 function gameLoop() {
     stats.begin(); // Begin measuring
-    ocean.update();
-    plane.update();
-    island.update();
-    for (var cloud = 0; cloud < 3; cloud++) {
-        clouds[cloud].update();
-        collision.check(clouds[cloud]);
+    road.update();
+    car.update();
+    fuelcan.update();
+    for (var stone = 0; stone < 3; stone++) {
+        stones[stone].update();
+        collision.check(stones[stone]);
     }
-    collision.check(island);
+    collision.check(fuelcan);
     scoreboard.update();
     stage.update();
     stats.end(); // end measuring
@@ -83,19 +83,19 @@ function gameLoop() {
 function main() {
     // instantiate game conatainer
     game = new createjs.Container();
-    //add ocean object to stage
-    ocean = new objects.Ocean(assets.getResult("ocean"));
-    game.addChild(ocean);
-    //add island object to stage
-    island = new objects.Island(assets.getResult("island"));
-    game.addChild(island);
-    // add plane object to stage
-    plane = new objects.Plane(assets.getResult("plane"));
-    game.addChild(plane);
-    // add 3 cloud objects to stage
-    for (var cloud = 0; cloud < 3; cloud++) {
-        clouds[cloud] = new objects.Cloud(assets.getResult("cloud"));
-        game.addChild(clouds[cloud]);
+    //add car object to stage
+    road = new objects.Road(assets.getResult("road"));
+    game.addChild(road);
+    //add fuelcan object to stage
+    fuelcan = new objects.FuelCan(assets.getResult("fuelcan"));
+    game.addChild(fuelcan);
+    // add car object to stage
+    car = new objects.Car(assets.getResult("car"));
+    game.addChild(car);
+    // add 3 stone objects to stage
+    for (var stone = 0; stone < 3; stone++) {
+        stones[stone] = new objects.Stone(assets.getResult("stone"));
+        game.addChild(stones[stone]);
     }
     //add scoreboard
     scoreboard = new objects.ScoreBoard();

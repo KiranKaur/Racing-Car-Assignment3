@@ -6,7 +6,7 @@ var __extends = this.__extends || function (d, b) {
 };
 var objects;
 (function (objects) {
-    // Cloud Class ++++++++++++++++++++++++++++++++++++++
+    // Stone Class ++++++++++++++++++++++++++++++++++++++
     var GameObject = (function (_super) {
         __extends(GameObject, _super);
         // CONSTRUCTOR ++++++++++++++++++++++++++++++++++

@@ -101,11 +101,11 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\game.ts" />
     <TypeScriptCompile Include="Scripts\managers\collision.ts" />
-    <TypeScriptCompile Include="Scripts\objects\cloud.ts" />
+    <TypeScriptCompile Include="Scripts\objects\stone.ts" />
     <TypeScriptCompile Include="Scripts\objects\gameobject.ts" />
-    <TypeScriptCompile Include="Scripts\objects\island.ts" />
-    <TypeScriptCompile Include="Scripts\objects\ocean.ts" />
-    <TypeScriptCompile Include="Scripts\objects\plane.ts" />
+    <TypeScriptCompile Include="Scripts\objects\fuelcan.ts" />
+    <TypeScriptCompile Include="Scripts\objects\road.ts" />
+    <TypeScriptCompile Include="Scripts\objects\car.ts" />
     <TypeScriptCompile Include="Scripts\objects\scoreboard.ts" />
     <TypeScriptCompile Include="Scripts\typings\createjs-lib\createjs-lib.d.ts" />
     <TypeScriptCompile Include="Scripts\typings\easeljs\easeljs.d.ts" />
