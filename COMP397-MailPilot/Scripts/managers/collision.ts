@@ -22,6 +22,24 @@
                 createjs.Sound.play(gameObject.sound);
                 if (gameObject.name == "stone") {
                     scoreboard.lives--;
+                    if (scoreboard.lives < 0) {
+                        game.removeChild(fuelcan);
+                        game.removeChild(car);
+                        for (var stone = 0; stone < 3; stone++) {
+
+                            game.removeChild(stones[stone]);
+                        }
+                        scoreboard.lives = 5;
+                        scoreboard.score = 0;
+                       
+
+                        game.addChild(gameover);
+                        game.addChild(tryagain);
+                        x = 0;
+                        
+
+                    }
+
                 }
                 if (gameObject.name == "fuelcan") {
                     scoreboard.score += 100;

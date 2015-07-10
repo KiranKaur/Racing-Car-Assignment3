@@ -7,6 +7,7 @@
 /// <reference path="objects/gameobject.ts" />
 /// <reference path="objects/road.ts" />
 /// <reference path="objects/car.ts" />
+/// <reference path="objects/button.ts" />
 /// <reference path="objects/fuelcan.ts" />
 /// <reference path="objects/stone.ts" />
 /// <reference path="objects/scoreboard.ts" />
@@ -21,19 +22,28 @@ var manifest = [
     { id: "road", src: "assets/images/road track.png" },
     { id: "car", src: "assets/images/car7.png" },
     { id: "fuelcan", src: "assets/images/gaspump.png" },
+    { id: "start", src: "assets/images/instructions.png" },
+    { id: "gameover", src: "assets/images/gameover.png" },
+    { id: "startbutton", src: "assets/images/startbutton.png" },
+    { id: "tryagain", src: "assets/images/tryagain.png" },
     { id: "stone", src: "assets/images/stone.png" },
-    { id: "yay", src: "assets/audio/yay.ogg" },
-    { id: "thunder", src: "assets/audio/thunder.ogg" },
-    { id: "engine", src: "assets/audio/engine.ogg" }
+    { id: "yay", src: "assets/audio/fuelcansound.wav" },
+    { id: "thunder", src: "assets/audio/stonesound.wav" },
+    { id: "engine", src: "assets/audio/cardriving.wav" }
 ];
 // Game Variables
 var road;
 var car;
 var fuelcan;
 var stones = [];
+var x = 0;
 var scoreboard;
 // Game Managers
 var collision;
+var start;
+var gameover;
+var startbutton;
+var tryagain;
 // Preloader Function
 function preload() {
     assets = new createjs.LoadQueue();
@@ -75,29 +85,67 @@ function gameLoop() {
         collision.check(stones[stone]);
     }
     collision.check(fuelcan);
-    scoreboard.update();
+    if (x == 1) {
+        scoreboard.update();
+    }
     stage.update();
     stats.end(); // end measuring
+}
+function startButtonClicked(event) {
+    game.addChild(fuelcan);
+    game.addChild(car);
+    // add 3 stone objects to stage
+    for (var stone = 0; stone < 3; stone++) {
+        game.addChild(stones[stone]);
+    }
+    // game.addChild(scoreboard.lives);
+    // game.addChild(scoreboard.score);
+    //add scoreboard
+    game.removeChild(start);
+    game.removeChild(startbutton);
+    game.removeChild(tryagain);
+    game.removeChild(gameover);
+    x = 1;
+}
+function tryagainButtonClicked(event) {
+    game.addChild(fuelcan);
+    game.addChild(car);
+    // add 3 stone objects to stage
+    for (var stone = 0; stone < 3; stone++) {
+        game.addChild(stones[stone]);
+    }
+    // game.addChild(scoreboard.lives);
+    // game.addChild(scoreboard.score);
+    //add scoreboard
+    game.removeChild(start);
+    game.removeChild(startbutton);
+    game.removeChild(tryagain);
+    game.removeChild(gameover);
+    x = 1;
 }
 // Our Main Game Function
 function main() {
     // instantiate game conatainer
+    x = 0;
     game = new createjs.Container();
     //add car object to stage
     road = new objects.Road(assets.getResult("road"));
     game.addChild(road);
     //add fuelcan object to stage
     fuelcan = new objects.FuelCan(assets.getResult("fuelcan"));
-    game.addChild(fuelcan);
-    // add car object to stage
-    car = new objects.Car(assets.getResult("car"));
-    game.addChild(car);
-    // add 3 stone objects to stage
     for (var stone = 0; stone < 3; stone++) {
         stones[stone] = new objects.Stone(assets.getResult("stone"));
-        game.addChild(stones[stone]);
     }
-    //add scoreboard
+    // add car object to stage
+    car = new objects.Car(assets.getResult("car"));
+    start = new createjs.Bitmap(assets.getResult("start"));
+    game.addChild(start);
+    startbutton = new objects.Button(assets.getResult("startbutton"), 440, 320);
+    game.addChild(startbutton);
+    startbutton.on("click", startButtonClicked);
+    gameover = new createjs.Bitmap(assets.getResult("gameover"));
+    tryagain = new objects.Button(assets.getResult("tryagain"), 440, 340);
+    tryagain.on("click", tryagainButtonClicked);
     scoreboard = new objects.ScoreBoard();
     //add collision manager
     collision = new managers.Collision();

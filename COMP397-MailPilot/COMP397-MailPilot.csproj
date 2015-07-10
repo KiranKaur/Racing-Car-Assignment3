@@ -59,10 +59,17 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="assets\audio\cardrivingsound.wav" />
+    <Content Include="assets\audio\fuelcansound.wav" />
+    <Content Include="assets\audio\stonesound.wav" />
     <Content Include="assets\images\car7.png" />
+    <Content Include="assets\images\gameover.png" />
     <Content Include="assets\images\gaspump.png" />
+    <Content Include="assets\images\instructions.png" />
     <Content Include="assets\images\road track.png" />
+    <Content Include="assets\images\startbutton.png" />
     <Content Include="assets\images\stone.png" />
+    <Content Include="assets\images\tryagain.png" />
     <Content Include="packages.config" />
     <Content Include="assets\audio\engine.ogg" />
     <Content Include="assets\audio\thunder.ogg" />
@@ -93,6 +100,7 @@
   <ItemGroup>
     <TypeScriptCompile Include="Scripts\game.ts" />
     <TypeScriptCompile Include="Scripts\managers\collision.ts" />
+    <TypeScriptCompile Include="Scripts\objects\button.ts" />
     <TypeScriptCompile Include="Scripts\objects\stone.ts" />
     <TypeScriptCompile Include="Scripts\objects\gameobject.ts" />
     <TypeScriptCompile Include="Scripts\objects\fuelcan.ts" />
