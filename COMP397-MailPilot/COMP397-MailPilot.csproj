@@ -59,16 +59,8 @@
     <Reference Include="System.EnterpriseServices" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="assets\images\car6.png" />
     <Content Include="assets\images\car7.png" />
-    <Content Include="assets\images\cloud.png" />
-    <Content Include="assets\images\cone.png" />
-    <Content Include="assets\images\finalcar.png" />
     <Content Include="assets\images\gaspump.png" />
-    <Content Include="assets\images\island.png" />
-    <Content Include="assets\images\ocean.gif" />
-    <Content Include="assets\images\plane.png" />
-    <Content Include="assets\images\redcar.png" />
     <Content Include="assets\images\road track.png" />
     <Content Include="assets\images\stone.png" />
     <Content Include="packages.config" />
